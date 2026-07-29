@@ -3,19 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Happy Birthday Ayu ❤️</title>
 
 <link rel="stylesheet" href="style.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 </head>
+
 <body>
+
+<!-- Musik -->
+<audio id="bgmusic" loop>
+    <source src="musicmp3.mp3" type="audio/mpeg">
+</audio>
 
 <!-- Loading -->
 <div id="loading">
-    <h1>Loading Surprise... ❤️</h1>
+    <h1>Loading Surprise...</h1>
 </div>
 
 <!-- Halaman Awal -->
@@ -25,10 +28,10 @@
 
     <h2>Ayu Pratiwi ❤️</h2>
 
-    <p>Ada kejutan kecil untuk seseorang yang sangat spesial...</p>
+    <p>Ada kejutan kecil untuk seseorang yang sangat spesial 💖</p>
 
     <button id="openBtn">
-        💖 Buka Kejutan
+        💌 Buka Kejutan
     </button>
 
 </section>
@@ -36,68 +39,156 @@
 <!-- Halaman Utama -->
 <section id="main" style="display:none;">
 
-<div class="hero">
+    <div class="hero">
 
-<img src="foto.jpg.jpg" class="foto" alt="Ayu">
+        <img src="foto.jpg.jpg" class="foto" alt="Ayu">
 
-<h1>Happy Birthday</h1>
+        <h1>Happy Birthday</h1>
 
-<h2>Ayu Pratiwi ❤️</h2>
+        <h2>Ayu Pratiwi ❤️</h2>
 
-<p>Selamat ulang tahun yang ke-22 Sayang 🤍</p>
+        <p>Selamat ulang tahun yang ke-22 Sayang 🤍</p>
 
-<a
-href="https://www.youtube.com/results?search_query=Nadhif+Basalamah+Kota+Ini+Tak+Sama+Tanpamu"
-target="_blank"
-class="music-btn">
-🎵 Putar Lagu Favorit
-</a>
+    </div>
 
-</div>
+    <div class="letter">
 
-<div class="letter">
+        <h2>💌 Untuk Ayu</h2>
 
-<h2>💌 Untuk Ayu</h2>
+        <p>
 
-<p>
-
-Selamat ulang tahun sayangku. ❤️
+Selamat ulang tahun sayangku.
 
 Semoga di usia yang ke-22 ini kamu selalu diberikan kesehatan,
 kebahagiaan,
 rezeki yang melimpah,
-serta semua impianmu dapat terwujud.
+dan semua impianmu tercapai.
 
 Terima kasih sudah hadir dalam hidupku.
 
-Terima kasih sudah menjadi alasan untuk tersenyum setiap hari.
+Terima kasih karena selalu membuat hari-hariku menjadi lebih indah.
 
 Aku mungkin belum sempurna,
-tetapi aku akan selalu berusaha menjadi seseorang yang bisa membuatmu bahagia.
+tetapi aku akan selalu berusaha menjadi yang terbaik untukmu.
 
-Semoga kita selalu diberi kekuatan untuk melewati setiap langkah bersama.
+Semoga kita selalu bersama,
+melewati suka dan duka,
+hingga semua mimpi kita menjadi nyata.
 
-Jangan pernah berhenti menjadi perempuan yang baik,
-ceria,
-dan lucu seperti yang selalu aku kenal.
+❤️ I Love You Forever ❤️
 
-Semoga semua doa terbaik selalu menyertaimu.
+        </p>
 
-❤️ Happy Birthday My Love ❤️
+    </div>
 
-</p>
-
-</div>
-
-<footer>
-
-Made with ❤️ by Someone Who Loves You
-
-</footer>
+    <footer>
+        Made with ❤️ by Someone Who Loves You
+    </footer>
 
 </section>
 
-<script src="script.js"></script>
+<script>
+
+const openBtn=document.getElementById("openBtn");
+const welcome=document.getElementById("welcome");
+const main=document.getElementById("main");
+const music=document.getElementById("bgmusic");
+
+openBtn.onclick=function(){
+
+welcome.style.display="none";
+main.style.display="block";
+
+music.play();
+
+for(let i=0;i<120;i++){
+createConfetti();
+}
+
+setInterval(createHeart,400);
+
+}
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.style.position="fixed";
+heart.style.left=Math.random()*100+"vw";
+heart.style.top="-20px";
+heart.style.fontSize=(15+Math.random()*25)+"px";
+heart.style.animation="fall 6s linear forwards";
+heart.style.pointerEvents="none";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+function createConfetti(){
+
+const c=document.createElement("div");
+
+c.style.position="fixed";
+c.style.width="8px";
+c.style.height="8px";
+c.style.left=Math.random()*100+"vw";
+c.style.top="-20px";
+c.style.background=["white","#ddd","#bbb","#999"][Math.floor(Math.random()*4)];
+
+c.style.animation="confetti 4s linear forwards";
+c.style.pointerEvents="none";
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+c.remove();
+},4000);
+
+}
+
+const style=document.createElement("style");
+
+style.innerHTML=`
+
+@keyframes fall{
+
+0%{
+transform:translateY(-20px) rotate(0deg);
+opacity:1;
+}
+
+100%{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
+}
+
+}
+
+@keyframes confetti{
+
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:1;
+}
+
+100%{
+transform:translateY(110vh) rotate(720deg);
+opacity:0;
+}
+
+}
+
+`;
+
+document.head.appendChild(style);
+
+</script>
 
 </body>
 </html>
